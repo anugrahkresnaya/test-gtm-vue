@@ -90,11 +90,6 @@ const submitForm = () => {
   form.email = '';
   form.message = '';
   
-  alert('Form submitted successfully!');
-  
-  // Reset submission state after a delay
-  setTimeout(() => {
-    isSubmitting.value = false;
-  }, 1000);
+  console.log('success submit')
 }
 </script>
