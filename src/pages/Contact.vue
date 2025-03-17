@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 const form = reactive({
   name: '',
@@ -66,7 +66,14 @@ const form = reactive({
   message: ''
 });
 
+// Add a submitting state
+const isSubmitting = ref(false);
+
 const submitForm = () => {
+  // Prevent multiple submissions
+  if (isSubmitting.value) return;
+  isSubmitting.value = true;
+  
   // Track form submission
   if (window.dataLayer) {
     window.dataLayer.push({
@@ -83,13 +90,11 @@ const submitForm = () => {
   form.email = '';
   form.message = '';
   
-  // Use a non-blocking notification instead of alert
-  // For example, set a success message in the UI
-  formSuccess.value = true; // Add this reactive variable to your component
+  alert('Form submitted successfully!');
   
-  // Or use setTimeout to avoid the alert issue
-  // setTimeout(() => {
-  //   alert('Form submitted successfully!');
-  // }, 100);
+  // Reset submission state after a delay
+  setTimeout(() => {
+    isSubmitting.value = false;
+  }, 1000);
 }
 </script>
