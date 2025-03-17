@@ -83,6 +83,13 @@ const submitForm = () => {
   form.email = '';
   form.message = '';
   
-  alert('Form submitted successfully!');
+  // Use a non-blocking notification instead of alert
+  // For example, set a success message in the UI
+  formSuccess.value = true; // Add this reactive variable to your component
+  
+  // Or use setTimeout to avoid the alert issue
+  // setTimeout(() => {
+  //   alert('Form submitted successfully!');
+  // }, 100);
 }
 </script>
